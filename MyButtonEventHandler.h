@@ -1,6 +1,5 @@
 // MyButtonEventHandler.h
 #pragma once
-
 #include <wx/wx.h>
 
 class MyButtonEventHandler : public wxEvtHandler {
@@ -17,4 +16,3 @@ private:
 
     wxDECLARE_EVENT_TABLE();
 };
-

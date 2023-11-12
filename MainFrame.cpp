@@ -1,18 +1,21 @@
 #include "MainFrame.h"
 #include "MyButtonEventHandler.h"
-#include "MyRoundButton.h"
+#include "MyButton.h"
 #include <wx/wx.h>
+
+wxBEGIN_EVENT_TABLE(MyButton, wxButton)
+EVT_PAINT(MyButton::OnPaint)
+EVT_SIZE(MyButton::OnSize)
+wxEND_EVENT_TABLE()
 
 MainFrame::MainFrame(const wxString& title) : wxFrame(nullptr, wxID_ANY, title, wxDefaultPosition) {
     /* main frame */
     wxPanel* panel = new wxPanel(this);
 
     /* button */
-    wxButton* m_btn = new wxButton(panel, wxID_ANY, "cmd", wxPoint(18, 20), wxDefaultSize, wxBORDER_NONE);
-    m_btn->SetBackgroundColour(wxColour(136, 77, 255));
-    m_btn->SetForegroundColour(wxColour(255, 255, 255));
     wxFont font(10, wxFONTFAMILY_DECORATIVE, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL);
-    m_btn->SetFont(font);
+    MyButton* m_btn = new MyButton(panel, wxID_ANY, "cmd", wxPoint(18, 20), wxDefaultSize,
+        wxColour(136, 77, 255), wxColour(255, 255, 255), font);
 
     /* events */
     MyButtonEventHandler* buttonEventHandler = new MyButtonEventHandler(m_btn, wxColour(136, 77, 255), wxColour(156, 97, 255));
